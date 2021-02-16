@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://console.aws.amazon.com/cloudtrail/home?region=us-east-1
+HostUrl=https://console.aws.amazon.com/cloudtrail/service/downloadEvents?fileName=event_history&fileType=csv&lookupField=ReadOnly&lookupValue=false&startTime=2021-01-26T03%3A34%3A32.849Z&endTime=2021-01-26T06%3A34%3A32.849Z&x-cloudtrail-xsrf-token=Y1luSkFOaVdmbTV5R3FhNHpoaWwzMko1QWxVS05nZHhWdEc4d1lyNWdWWXwtODYyNDQ5MTIyNDk1NzQwNDI1MHwxfDIwMjEtMDEtMjZUMDY6MzM6MTMuMjgzWg%3D%3D&region=us-east-1
