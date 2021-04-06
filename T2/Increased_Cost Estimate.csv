@@ -12,5 +12,6 @@ NAT (7 GB/h ),,1051.2,Growth of download traffic,,,337.74
 S3 Data Transfer (50 TB),,4103.11,4003.11,,,2101.555
 S3 Storage (50 TB),,2304,,,,588.8
 VPC Data Tranfer (5 TB),,460.71,410.71,Final cost,,430.71
+Elastic IP,,0,,,,0
 ,,10504.83406,4413.82,19990.96906,,5072.315
 I consider that the product has been quite successful. The traffic increaced and the amount of GB per user additionally we created a new market in asia. ,,,,,,
