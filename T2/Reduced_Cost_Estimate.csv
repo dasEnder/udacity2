@@ -1,15 +1,17 @@
-﻿Baseload;"4 vCPU; 16 GB x 4 (1+1)+(1+1)  [t4g.xlarge]";247.8033333
-Pickload;x2;627.68
-Baseload;"4 vCPU; 8 GB x 4 (1+1) x2  [a1.xlarge]";175.2
-Pickload;;
-Sccenario ;(Baseload (60%) + Peaklaod (40%) ) x 2;504.874
-S3 10 GB (webcontent);;230
-S3 User Data (all content per h);;647.91
-db.m1.large ( 100 GB DB x 2 + 300 DB backup);;746.1
-"Load balancer 7 GB; 3 CONN; 6 sec per CONN x 2";;114.61
-"NAT (7 GB/h; all 5 TB cross to Private )";;262.8
-"S3 Data Transfer (50 TB; all content x2 per month)";;2201.555
-S3 Storage (25 TB);;588.8
-VPC Data Tranfer (5 TB);;460.71
-;;5757.359
-I took bigger instances with upfront payments. The narrative is that the service is not growing as expected and has stable but not bursting behaviour. Also, I cut in the amount of storage capacity. I calculate the data with a fix max amount of data per user. I reduced the maximum amount;;
+﻿,,us-east-1 (05.04.21),
+Baseload,4 vCPU; 16 GB x 4 (1+1)+(1+1)  [t4g.xlarge],124.1280556,(3 y up front reserved)
+Pickload,x2,433.97,
+Baseload,4 vCPU; 8 GB x 4 (1+1) x2  [a1.xlarge],175.20,
+Pickload,,,
+Sccenario ,Baseload (60%) + Peaklaod (40%) ,423.2640556,
+S3 10 GB (webcontent),,230,
+S3 User Data (all content per h),,647.91,
+db.m1.large ( 100 GB DB x 2 + 300 DB backup),,746.1,
+Load balancer 7 GB," 3 CONN,  6 sec per CONN x 2",114.61,
+NAT (7 GB/h, all 5 TB cross to Private ),262.8,
+S3 Data Transfer (50 TB, all content x2 per month),2201.555,
+S3 Storage (25 TB),,588.8,
+VPC Data Tranfer (5 TB),,460.71,
+Elastic IP,,0,
+,,5675.749056,
+I took bigger instances with upfront payments. The narrative is that the service is not growing as expected and has stable but not bursting behaviour. ,,,

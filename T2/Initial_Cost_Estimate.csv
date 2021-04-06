@@ -1,14 +1,16 @@
-Baseload;"4 vCPU; 8 GB x 4 (2+2)  [a1.xlarge]";313.84
-Pickload;x4;1255.36
-Baseload;"4 vCPU; 8 GB x 4 (1+1)  [a1.xlarge]";154.92
-Pickload;x2;309.84
-Sccenario ;(Baseload (60%) + Peaklaod (40%) ) x 2;907.336
-S3 10 GB (webcontent);;230
-S3 User Data (all content per h);;647.91
-db.m1.large ( 100 GB DB x 2 + 300 DB backup);;746.1
-"Load balancer 7 GB; 3 CONN; 6 sec per CONN x 2";;114.61
-"NAT (7 GB/h; all 5 TB cross to Private )";;262.8
-"S3 Data Transfer (50 TB; all content x2 per month)";;4403.11
-S3 Storage (25 TB);;1177.6
-VPC Data Tranfer (5 TB);;460.71
-;;8950.176
+,,us-east-1 (05.04.21)
+Baseload,4 vCPU; 8 GB x 4 (2+2)  [a1.xlarge],309.84
+Pickload,x4,"1,239.36"
+Baseload,4 vCPU; 8 GB x 4 (1+1)  [a1.xlarge],154.92
+Pickload,x2,309.84
+Sccenario ,Baseload (60%) + Peaklaod (40%) ,898.536
+S3 10 GB (webcontent),,230
+S3 User Data (all content per h),,647.91
+db.m1.large ( 100 GB DB x 2 + 300 DB backup),,746.1
+"Load balancer 7 GB, 3 CONN, 6 sec per CONN x 2",,114.61
+NAT (7 GB/h  all 5 TB cross to Private ),,262.8
+S3 Data Transfer (50 TB all content x2 per month), ,4403.11
+S3 Storage (25 TB),,1177.6
+VPC Data Tranfer (5 TB),,460.71
+Elastic IP ,,0
+,,8941.376
