@@ -1,23 +1,35 @@
-provider "aws" {
-  region = "${var.aws_region}"
+
+
+variable "aws_region" {
+    type = string 
 }
 
-
+variable "function_file" {
+    type = string
+}
+variable "function_name" {
+    type = string
+}
+variable "handler_name" {
+    type = string
+}
+provider "aws" {
+  region = var.aws_region
+}
 data "archive_file" "lambda_zip" {
     type          = "zip"
-    source_file   = "greet_lambda.py"
+    source_file   = var.function_file
     output_path   = "lambda_function.zip"
 }
 
-resource "aws_lambda_function" "udactiy_lambda" {
+resource "aws_lambda_function" "udacity_function" {
   filename         = "lambda_function.zip"
-  function_name    = "udactiy_lambda"
+  function_name    = var.function_file
   role             = "${aws_iam_role.iam_for_lambda_tf.arn}"
-  handler          = "greet_lambda.lambda_handler"
+  handler          = var.handler_name
   source_code_hash = "${data.archive_file.lambda_zip.output_base64sha256}"
   runtime          = "python3.8"
 }
-
 resource "aws_iam_role" "iam_for_lambda_tf" {
   name = "iam_for_lambda_tf"
 
@@ -35,8 +47,20 @@ resource "aws_iam_role" "iam_for_lambda_tf" {
     }
   ]
 }
-
 EOF
+}
+output "arn" {
+  value  = aws_lambda_function.udactiy_lambda.arn
+}
+output "qualified_arn" {
+  value       = aws_lambda_function.udactiy_lambda.qualified_arn
+}
+output "last_modified" {
+  value       = aws_lambda_function.udactiy_lambda.last_modified
+}
+
+
+
 
 
 
@@ -63,4 +87,3 @@ EOF
 #     }
 #   ]
 # }
-}
