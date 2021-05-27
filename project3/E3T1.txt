@@ -1,0 +1,134 @@
+# Describe GuardDuty findings that were detected related to the brute force attack
+
+# Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information.
+
+
+What findings were detected related to the brute force attack?
+In general, information about the origin of the attack. In particular, the info below:
+[
+  {
+    "schemaVersion": "2.0",
+    "accountId": "918025571920",
+    "region": "us-east-1",
+    "partition": "aws",
+    "id": "30bcd21ff44a9ca155fee3ce652caca9",
+    "arn": "arn:aws:guardduty:us-east-1:918025571920:detector/a6bcd1621b53af103866c4383d7cc654/finding/30bcd21ff44a9ca155fee3ce652caca9",
+    "type": "UnauthorizedAccess:EC2/SSHBruteForce",
+    "resource": {
+      "resourceType": "Instance",
+      "instanceDetails": {
+        "instanceId": "i-0c847529a63ab6a13",
+        "instanceType": "t3.micro",
+        "launchTime": "2021-05-25T15:44:27Z",
+        "platform": null,
+        "productCodes": [],
+        "iamInstanceProfile": {
+          "arn": "arn:aws:iam::918025571920:instance-profile/c3-app-InstanceProfileRole-ZLU0AF44ZVEY",
+          "id": "AIPA5LPUWRZIPGKCDYJGV"
+        },
+        "networkInterfaces": [
+          {
+            "networkInterfaceId": "eni-08d002680f76f0927",
+            "privateIpAddresses": [
+              {
+                "privateDnsName": "ip-10-192-11-245.ec2.internal",
+                "privateIpAddress": "10.192.11.245"
+              }
+            ],
+            "subnetId": "subnet-04a13087c4397a2ce",
+            "vpcId": "vpc-0f5fad6ed3faa8a21",
+            "privateDnsName": "ip-10-192-11-245.ec2.internal",
+            "securityGroups": [
+              {
+                "groupName": "AttackInstanceSG",
+                "groupId": "sg-012824616198acd53"
+              }
+            ],
+            "publicIp": "3.80.75.80",
+            "ipv6Addresses": [],
+            "publicDnsName": "ec2-3-80-75-80.compute-1.amazonaws.com",
+            "privateIpAddress": "10.192.11.245"
+          }
+        ],
+        "outpostArn": null,
+        "tags": [
+          {
+            "value": "AttackInstance",
+            "key": "aws:cloudformation:logical-id"
+          },
+          {
+            "value": "Attack Instance - C3",
+            "key": "Name"
+          },
+          {
+            "value": "arn:aws:cloudformation:us-east-1:918025571920:stack/c3-app/beeb6710-bd6f-11eb-822d-0ab7c9206afb",
+            "key": "aws:cloudformation:stack-id"
+          },
+          {
+            "value": "c3-app",
+            "key": "aws:cloudformation:stack-name"
+          }
+        ],
+        "instanceState": "running",
+        "availabilityZone": "us-east-1b",
+        "imageId": "ami-01fcf79ce78f46764",
+        "imageDescription": ""
+      }
+    },
+    "service": {
+      "serviceName": "guardduty",
+      "detectorId": "a6bcd1621b53af103866c4383d7cc654",
+      "action": {
+        "actionType": "NETWORK_CONNECTION",
+        "networkConnectionAction": {
+          "connectionDirection": "OUTBOUND",
+          "remoteIpDetails": {
+            "ipAddressV4": "10.192.10.65",
+            "organization": {
+              "asn": "0",
+              "asnOrg": "",
+              "isp": "",
+              "org": ""
+            },
+            "country": {
+              "countryName": null
+            },
+            "city": {
+              "cityName": ""
+            },
+            "geoLocation": {
+              "lat": 0,
+              "lon": 0
+            }
+          },
+          "remotePortDetails": {
+            "port": 22,
+            "portName": "SSH"
+          },
+          "localPortDetails": {
+            "port": 45326,
+            "portName": "Unknown"
+          },
+          "protocol": "TCP",
+          "blocked": false,
+          "localIpDetails": {
+            "ipAddressV4": "10.192.11.245"
+          }
+        }
+      },
+      "resourceRole": "ACTOR",
+      "additionalInfo": {},
+      "evidence": null,
+      "eventFirstSeen": "2021-05-25T15:51:20Z",
+      "eventLastSeen": "2021-05-25T16:42:59Z",
+      "archived": false,
+      "count": 8
+    },
+    "severity": 8,
+    "createdAt": "2021-05-25T15:58:42.325Z",
+    "updatedAt": "2021-05-25T16:47:11.679Z",
+    "title": "i-0c847529a63ab6a13 is performing SSH brute force attacks against 10.192.10.65.",
+    "description": "i-0c847529a63ab6a13 is performing SSH brute force attacks against 10.192.10.65. Brute force attacks are used to gain unauthorized access to your instance by guessing the SSH password."
+  }
+]Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information?
+Form Amazon documentation: "This finding is generated only through monitoring traffic on port 22. If your SSH services are configured to use other ports, this finding is not generated.". This data comes from the VPC flow logs. 

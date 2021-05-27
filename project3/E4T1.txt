@@ -1,0 +1,13 @@
+
+
+# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+
+1. Remove ssh user/password access or ssh access at all. Use a bastion, VPN, or Systems Manager; alternative move to inmutabel instances.
+2. After (2), remove all direct internet access to the applcation instance.
+3. Enable WAF and apply policies that automatically block suspicious traffic.
+
+# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+
+1. enable "Block all public access"
+2. Use S3 bucket policies for prevent unwanted and grant wanted access.
+3. Use ACL to granularly grant access.

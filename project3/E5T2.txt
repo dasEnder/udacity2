@@ -1,0 +1,25 @@
+Please see the second slide of the DevOpsPipeline for clerance.
+
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+TFsec: scans terraform files. It can be use in the local dev env, or in the CI env dev/test
+
+### Example vulnerability
+
+ Use over permissive CIDR (e.g., 0.0.0.0/0). No use of TLS for HTTP. AWS keys in the TF files 
+
+##Scan AMI’s or containers for OS vulnerabilities
+
+Docker scan: Vulnerability scanning for Docker local images allows teams to review the security state of the container images and take actions to fix issues identified during the scan
+
+### Example vulnerability
+
+Detect known vulnerabilities in the artifacts, e.g., in perl image, Integer Overflow or Wraparound (SNYK-DEBIAN10-PERL-570802)
+
+##Scan an AWS environment for cloud configuration vulnerabilities
+AWS Config, AWS Inspector  
+
+### Example vulnerability
+
+exposed SSH service to brute force attacks

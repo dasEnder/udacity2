@@ -1,0 +1,22 @@
+
+# What additional architectural change can be made to reduce the internet facing attack surface of the web application instance.
+
+1. Block direct internet all traffic that is not comming from the ELB using ACL
+2. Enalble SSL to avoid suplatation
+3. Develop an Auth(entication/orization) mechanism using, e.g., cognito
+4. Use Bastion, VPN, Systems Manager, or inmutable instances.
+5. Allow access to the S3 only through AWS internal connections.
+
+
+# Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.
+Note: The question is too vague! Asume that is not secure, but why? I can imagine that the permissions are as set by the stack, but just think that is insecure by magic. How I prevent that magic do not bridge any sec mechanism? In other words, I cannot effectively think on a technical solution of a problem without first pressenting the specifics of the scenario.
+
+Depends (read note). If the attacker comes from the internet, it will because will not be reachabel (asuming the public access has been disabled). If the atacker access using the network where the enpoint is, then not. 
+
+# Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
+
+No. "Amazon S3’s default encryption can be used to automate the encryption of new objects in your bucket, but default encryption does not change the encryption of existing objects in the same bucket." [https://aws.amazon.com/blogs/storage/encrypting-existing-amazon-s3-objects-with-the-aws-cli/]
+
+# What would happen if the original cloud formation templates are applied to this environment.
+
+It will fail due to naming collisions

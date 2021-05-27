@@ -1,0 +1,64 @@
+Status	Severity	ID			Title
+FAILED	LOW			CIS.1.10	"Avoid the use of the root"" account"""
+==> create tailored user and used them insted of the root
+FAILED	LOW			CIS.1.10	Ensure IAM password policy prevents password reuse
+==> Create an IAM password policy that prevents this
+FAILED	LOW			CIS.1.11	Ensure IAM password policy expires passwords within 90 days or less
+==> Create an IAM password policy that prevents this
+FAILED	CRITICAL	CIS.1.14	"Ensure hardware MFA is enabled for the root"" account"""
+==> Set MFA in the root account
+FAILED	LOW			CIS.1.16	Ensure IAM policies are attached only to groups or roles
+==> Remove policies to users and give them to groups or policies
+FAILED	MEDIUM		CIS.1.20	Ensure multi-factor authentication (MFA) is enabled for all IAM users that have a console password
+==> Create an IAM password policy that prevents that MFA is not enabled
+FAILED	LOW			CIS.1.20	Ensure a support role has been created to manage incidents with AWS Support
+==> Create the beforementioned role
+FAILED	MEDIUM		CIS.1.90	Ensure IAM password policy requires minimum password length of 14 or greater
+==> Create an IAM password policy that enforces this
+FAILED	HIGH		CIS.2.10	Ensure CloudTrail is enabled in all regions
+==> enable CloudTrail in all regions
+FAILED	LOW			CIS.2.40	Ensure CloudTrail trails are integrated with CloudWatch Logs
+==> integrated CloudTrail with CloudWatch
+FAILED	LOW			CIS.2.60	Ensure S3 bucket access logging is enabled on the CloudTrail S3 bucket
+==> enable CloudTrail loggin on each bucket
+FAILED	MEDIUM		CIS.2.80	Ensure rotation for customer created CMKs is enabled
+==> enable key rotation in CMKs
+FAILED	MEDIUM		CIS.2.90	Ensure VPC fLOW		 logging is enabled in all VPCs
+==> enable enable flow logging
+FAILED	LOW			CIS.3.10	Ensure a log metric filter and alarm exist for unauthorized API calls
+FAILED	LOW			CIS.3.10	Ensure a log metric filter and alarm exist for security group changes
+FAILED	LOW			CIS.3.11	Ensure a log metric filter and alarm exist for changes to Network Access Control Lists (NACL)
+FAILED	LOW			CIS.3.12	Ensure a log metric filter and alarm exist for changes to network gateways
+FAILED	LOW			CIS.3.13	Ensure a log metric filter and alarm exist for route table changes
+FAILED	LOW			CIS.3.14	Ensure a log metric filter and alarm exist for VPC changes
+FAILED	LOW			CIS.3.20	Ensure a log metric filter and alarm exist for Management Console sign-in without MFA
+FAILED	LOW			CIS.3.30	"Ensure a log metric filter and alarm exist for usage of root"" account"""
+FAILED	LOW			CIS.3.40	Ensure a log metric filter and alarm exist for IAM policy changes
+FAILED	LOW			CIS.3.50	Ensure a log metric filter and alarm exist for CloudTrail configuration changes
+FAILED	LOW			CIS.3.60	Ensure a log metric filter and alarm exist for AWS Management Console authentication failures
+FAILED	LOW			CIS.3.70	Ensure a log metric filter and alarm exist for disabling or scheduled deletion of customer created CMKs
+FAILED	LOW			CIS.3.80	Ensure a log metric filter and alarm exist for S3 bucket policy changes
+FAILED	LOW			CIS.3.90	Ensure a log metric filter and alarm exist for AWS Config configuration changes
+==> enable log metric filter and alarms for the list above. 
+FAILED	HIGH		CIS.4.10	Ensure no security groups alLOW		 ingress from 0.0.0.0/0 to port 22
+FAILED	HIGH		CIS.4.20	Ensure no security groups alLOW		 ingress from 0.0.0.0/0 to port 3389
+==> deny access of to port 22 and 3389 or scope the source
+FAILED	HIGH		CIS.4.30	Ensure the default security group of every VPC restricts all traffic
+==> restric all unnecessary traffic in the default VPC security group
+
+
+Low	 	"On instance i-08c4242d3a9a1a9cd, process 'python3' is listening on UDP port 5000 which is reachable from the internet"
+Low		"On instance i-08c4242d3a9a1a9cd, process 'python3' is listening on TCP port 5000 which is reachable from the internet"
+Low 	"On instance i-08c4242d3a9a1a9cd, process 'python3' is listening on TCP port 5000 which is reachable from the internet"
+==> restric access to the port using firewall and security group allowing access only through the ELB.
+Medium	Instance i-08c4242d3a9a1a9cd  is configured to support password authentication over SSH. Password authentication is susceptible to brute-force attacks and should be disabled in favor of key-based authentication where possible.
+==> either remove SSH access and move towards inmutable instance; or remove user/password auth mechanism. 
+Medium	"Instance i-08c4242d3a9a1a9cd is configured to allow users to log in with root credentials over SSH, without having to use a command authenticated by a public key. This increases the likelihood of a successful brute-force attack."
+==> remove the possibility of ssh using root.
+Medium	"No password complexity mechanism or restrictions are configured on instance i-08c4242d3a9a1a9cd in your assessment target. This allows users to set simple passwords, thereby increasing the chances of unauthorized users gaining access and misusing accounts."
+==> set passwords rules in the instance, or remove the possibility to ssh the instance.
+Medium	Minimum length for passwords is not configured on instance i-08c4242d3a9a1a9cd in your assessment target.
+==> set passwords rules in the instance, or remove the possibility to ssh the instance.
+Medium	"On instance i-08c4242d3a9a1a9cd, process 'sshd' is listening on TCP port 22 which is associated with 'SSH' and is reachable from the internet"
+Medium	"On instance i-08c4242d3a9a1a9cd, process 'sshd' is listening on TCP port 22 which is associated with 'SSH' and is reachable from the internet"
+==> remove the possibility to ssh the instance by creating inmutable instance, or use bastion, VPN, or Systems Manager.
